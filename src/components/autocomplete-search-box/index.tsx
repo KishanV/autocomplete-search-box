@@ -155,7 +155,10 @@ export class AutocompleteSearchBox extends React.Component<
       this.state.value
     ) {
       const data = this.state.foundList[this.state.indexOfSelected];
-      const foundInfo = this.findFromPerson(data, this.state.value);
+      const foundInfo = this.findFromPerson(
+        data,
+        this.state.value?.toLocaleLowerCase()
+      );
       if (foundInfo) {
         this.setState({
           data: undefined,

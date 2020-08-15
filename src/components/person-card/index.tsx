@@ -50,7 +50,7 @@ export class PersonsCard extends React.Component<PersonsProps, State> {
   }
 
   getItems() {
-    const highlightText = this.props.highlightText;
+    const highlightText = this.props.highlightText?.toLocaleLowerCase();
     if (highlightText) {
       const found = this.props.data.items.find((item) =>
         item.toLocaleLowerCase().startsWith(highlightText)
@@ -75,9 +75,10 @@ export class PersonsCard extends React.Component<PersonsProps, State> {
         return text;
       }
       const FoundText = text.substr(0, highlightText.length);
-      const list: (string | React.ReactNode)[] = text.split(FoundText);
-      list.splice(1, 0, <span className={"high-light-text"}>{FoundText}</span>);
-      return list;
+      return [
+        <span className={"high-light-text"}>{FoundText}</span>,
+        text.substr(FoundText.length, text.length - FoundText.length),
+      ];
     }
   }
 }
