@@ -1,18 +1,19 @@
 import React = require("react");
 import "./index.scss";
 import { hot } from "react-hot-loader/root";
+import { AutocompleteSearchBox } from "../components/autocomplete-search-box";
 
-interface State {}
-
-export class App extends React.Component<any, State> {
-  state: State = {};
-
+export class App extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
   }
 
   render() {
-    return <div className={"App"}></div>;
+    return (
+      <div className={"App"}>
+        <AutocompleteSearchBox />
+      </div>
+    );
   }
 }
 

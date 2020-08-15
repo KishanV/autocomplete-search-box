@@ -1,0 +1,42 @@
+.persons-card {
+  width: 100%;
+  height: auto;
+  position: relative;
+  float: left;
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  &.focused {
+    background: #eee;
+  }
+  > .line {
+    height: 14px;
+    line-height: 14px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    > span.high-light-text {
+      text-decoration: underline;
+      color: blue;
+      font-weight: bolder;
+    }
+    &.id {
+      color: #000;
+      font-weight: bold;
+    }
+    &.name {
+      font-style: italic;
+      color: #777;
+      border-bottom: 1px solid #ddd;
+    }
+    &.address {
+      color: #ccc;
+    }
+    &.items {
+      color: #777;
+      border-bottom: 1px solid #ddd;
+      color: blue;
+    }
+  }
+}
