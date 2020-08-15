@@ -48,6 +48,20 @@
       overflow-y: auto;
       max-height: 250px;
       box-sizing: border-box;
+      > .no-data {
+        width: 150px;
+        height: 50px;
+        position: relative;
+        float: left;
+        > .text {
+          position: absolute;
+          width: auto;
+          height: auto;
+          transform: translateX(-50%) translateY(-50%);
+          top: 50%;
+          left: 50%;
+        }
+      }
     }
   }
 }

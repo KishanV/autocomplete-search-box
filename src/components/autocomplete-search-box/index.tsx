@@ -102,7 +102,7 @@ export class AutocompleteSearchBox extends React.Component<
 
     this.setState({
       data,
-      foundList: foundList.length ? foundList : undefined,
+      foundList: foundList,
       indexOfSelected: undefined,
     });
   }
@@ -259,26 +259,32 @@ export class AutocompleteSearchBox extends React.Component<
     return (
       <div className="holder">
         <div className="list">
-          {foundData.map((personData, index) => {
-            const isSelected = index === this.state.indexOfSelected;
-            return (
-              <PersonsCard
-                ref={isSelected ? this.personsCardRef : undefined}
-                isFocused={isSelected}
-                key={personData.id}
-                data={personData}
-                highlightText={this.state.value}
-                onMouseOver={() => {
-                  this.setState({
-                    indexOfSelected: index,
-                  });
-                }}
-                onMouseDown={() => {
-                  this.onSelect();
-                }}
-              />
-            );
-          })}
+          {foundData.length ? (
+            foundData.map((personData, index) => {
+              const isSelected = index === this.state.indexOfSelected;
+              return (
+                <PersonsCard
+                  ref={isSelected ? this.personsCardRef : undefined}
+                  isFocused={isSelected}
+                  key={personData.id}
+                  data={personData}
+                  highlightText={this.state.value}
+                  onMouseOver={() => {
+                    this.setState({
+                      indexOfSelected: index,
+                    });
+                  }}
+                  onMouseDown={() => {
+                    this.onSelect();
+                  }}
+                />
+              );
+            })
+          ) : (
+            <div className="no-data">
+              <div className={"text"}>No User Found</div>
+            </div>
+          )}
         </div>
       </div>
     );
