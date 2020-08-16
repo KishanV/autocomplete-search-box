@@ -110,7 +110,7 @@ export class AutocompleteSearchBox extends React.Component<
   onSearch(value?: string) {
     this.setState(
       {
-        value,
+        value: value ? value.trim() : undefined,
         data: value ? this.state.data : undefined,
         foundList: undefined,
         indexOfSelected: undefined,
