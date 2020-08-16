@@ -87,7 +87,7 @@ export class AutocompleteSearchBox extends React.Component<
       return;
     }
 
-    const searchValue = this.state.value?.toLocaleLowerCase();
+    const searchValue = this.state.value?.toLocaleLowerCase().trim();
     const foundList: PersonsDataList = [];
     if (searchValue) {
       for (let index = 0; index < data.length; index++) {
@@ -110,7 +110,7 @@ export class AutocompleteSearchBox extends React.Component<
   onSearch(value?: string) {
     this.setState(
       {
-        value: value ? value.trim() : undefined,
+        value: value,
         data: value ? this.state.data : undefined,
         foundList: undefined,
         indexOfSelected: undefined,
@@ -149,16 +149,14 @@ export class AutocompleteSearchBox extends React.Component<
   }
 
   onSelect() {
+    const searchValue = this.state.value?.toLocaleLowerCase().trim();
     if (
       this.state.indexOfSelected !== undefined &&
       this.state.foundList &&
-      this.state.value
+      searchValue
     ) {
       const data = this.state.foundList[this.state.indexOfSelected];
-      const foundInfo = this.findFromPerson(
-        data,
-        this.state.value?.toLocaleLowerCase()
-      );
+      const foundInfo = this.findFromPerson(data, searchValue);
       if (foundInfo) {
         this.setState({
           data: undefined,
